@@ -16,14 +16,28 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: app
+    ports:
+      - "5432:5432"
   app:
     build: .
     depends_on:
       - kafka
+      - postgres
     environment:
       PORT: 3000
       KAFKA_BROKER: kafka:9092
       KAFKA_CLIENT_ID: test-ai
       KAFKA_GROUP_ID: test-ai-group
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: user
+      DB_PASS: pass
+      DB_NAME: app
     ports:
       - "3000:3000"

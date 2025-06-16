@@ -4,7 +4,8 @@
   "description": "Base Nest.js project",
   "scripts": {
     "start": "ts-node src/main.ts",
-    "build": "tsc -p tsconfig.build.json"
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -13,12 +14,20 @@
     "rxjs": "^7.8.1",
     "@nestjs/microservices": "^10.0.0",
     "@nestjs/config": "^3.0.0",
-    "kafkajs": "^2.6.2"
+    "kafkajs": "^2.6.2",
+    "@nestjs/typeorm": "^10.0.0",
+    "typeorm": "^0.3.19",
+    "pg": "^8.8.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.2.0",
     "@types/node": "^20.0.0",
     "ts-node": "^10.0.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "@nestjs/testing": "^10.0.0",
+    "jest": "^29.6.0",
+    "ts-jest": "^29.1.0",
+    "@types/jest": "^29.5.0",
+    "supertest": "^6.3.3"
   }
 }
